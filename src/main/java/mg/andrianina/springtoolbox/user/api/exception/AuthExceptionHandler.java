@@ -11,8 +11,15 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.List;
 import java.util.Map;
 
+// Every class that handles Exception must be annotated with the @RestControllerAdvice
 @RestControllerAdvice
 public class AuthExceptionHandler {
+    /***
+     * Each method that handles exception should be annotated with the @ExceptionHandler annotation with the type of
+     * exception that it handle as a parameter
+     * @param e UserAlreadyExistException the exception that this method handle
+     * @return Map<String, String> as json
+     */
     @ExceptionHandler(UserAlreadyExistException.class)
     @ResponseStatus(HttpStatus.CONFLICT)
     public Map<String, String> onUserAlreadyExistException(UserAlreadyExistException e) {
