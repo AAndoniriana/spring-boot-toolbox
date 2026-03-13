@@ -6,7 +6,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.time.Instant;
 
 @Entity
-@Table(name = "users")
+@Table(name = "test_user")
 public class UserEntity {
     @Id
     @GeneratedValue
@@ -19,12 +19,4 @@ public class UserEntity {
     public String password;
     @CreationTimestamp
     public Instant createdAt = Instant.now();
-
-    public UserEntity(String username, String email, String password) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
-    }
-
-    public UserEntity() {}
 }

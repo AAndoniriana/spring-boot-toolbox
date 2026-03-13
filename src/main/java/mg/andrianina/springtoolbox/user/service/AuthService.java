@@ -25,7 +25,11 @@ public class AuthService {
         if (!existingUser.isEmpty()) {
             throw new UserAlreadyExistException();
         }
-        var userEntity = userRepository.save(new UserEntity(trimmedUsername, trimmedEmail, password));
+        UserEntity newUser = new UserEntity();
+        newUser.password = password;
+        newUser.username = trimmedUsername;
+        newUser.email = trimmedEmail;
+        UserEntity userEntity = userRepository.save(newUser);
         return UserMapper.entityToDomain(userEntity);
     }
 
